@@ -22,6 +22,10 @@ header{
     box-shadow: 2px 3px 10px gray;
     align-items: center;
     margin-top: 20px;
+    position: static;
+    /* top:0; */
+    /* z-index: 100; */
+
      /* background-image: linear-gradient(to right,rgb(0, 0, 0),rgb(189, 48, 194)); */
 background: linear-gradient(135deg, #1a001f, #2d004d);
     /* position: fixed;
@@ -59,8 +63,8 @@ nav>ul>li>a{
 
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
+.nav-links li :hover,
+.nav-links li .active {
   color: #fff;
 }
 nav button{
@@ -220,7 +224,7 @@ h3{
     background-image: linear-gradient(to right, white,blue);
     background-clip: text;
     color: transparent;
-    animation: upDown 0.5s ease alternate infinite;
+    animation: upDown 0.8s ease alternate infinite;
     
 
 }
@@ -241,7 +245,7 @@ section{
   
 }
 .skills-tech:hover{
-    transform: scale(1.1);
+    transform: scale(0.9);
 }
 
 /* .skills,img{
@@ -509,6 +513,7 @@ footer{
   justify-content: center;
   align-items: center;
   transform: rotate(0deg);
+  /* transform: translateX(500px); */
 }
 
 /* Avatar */
@@ -597,4 +602,390 @@ footer{
 @keyframes float-rotate {
   0%, 100% { transform: rotate(0deg) translateY(0); }
   50% { transform: rotate(10deg) translateY(-12px); }
+}
+/**/
+.floating-watsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.floating-watsapp:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(0, 255, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
+  }
+}
+
+/**/
+header {
+  /* Keep your existing styles but add these */
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+  background: rgba(45, 0, 77, 0.8); /* Slightly transparent background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(10px);
+  /* Use a smooth transition for the background */
+  transition: background 0.5s ease;
+}
+
+header:hover {
+  background: rgba(45, 0, 77, 1); /* Opaque on hover */
+}
+
+/* Also, let's refine the navigation links */
+nav > ul > li > a {
+  text-decoration: none;
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links li:hover a,
+.nav-links li .active {
+  color: #ff66ff; /* A different, vibrant color */
+  transform: translateY(-3px); /* Subtle lift on hover */
+}
+/**/
+/* Add to your existing CSS file */
+#banner {
+  display: flex;
+  max-width: 1280px;
+  margin: 60px auto;
+  gap: 100px;
+  align-items: center; /* This will center your content vertically */
+}
+
+.left {
+  /* Keep your existing styles */
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.frame-section {
+  animation: slideInRight 1s ease-out;
+  animation-delay: 0.5s; /* Add a slight delay */
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Let's also make the text a bit more dynamic */
+.left > h2, .left > p {
+  animation: fadeIn 1.5s ease-out;
+}
+
+.left > h2 {
+  animation-delay: 0.2s;
+}
+
+.left > p {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/**/
+/* Add this to your existing CSS */
+
+/* Skill and Project Cards */
+.skills-tech,
+.project {
+  /* Keep existing styles, but refine the transition */
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* A more subtle initial shadow */
+}
+
+.skills-tech:hover,
+.project:hover {
+  transform: translateY(-10px) scale(1.02); /* Lifts and slightly scales */
+  box-shadow: 0 15px 30px rgba(255, 102, 255, 0.4),
+    0 5px 10px rgba(0, 0, 0, 0.2); /* A more prominent, colorful shadow on hover */
+}
+
+/* Also, add a hover effect to the project image */
+.project > img {
+  transition: transform 0.3s ease;
+}
+
+.project:hover > img {
+  transform: scale(1.05);
+}
+/**/
+/* New Skills Section Styles */
+#skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 70px auto;
+  max-width: 1280px;
+  padding: 0 20px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: #2d004d;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 102, 255, 0.6);
+}
+
+.skill-card img {
+  width: 80px;
+  height: 80px;
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+
+.skill-card:hover img {
+  filter: grayscale(0%);
+}
+
+.skill-card p {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+/**/
+/* New Contact Section Styles */
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 70px auto;
+  max-width: 800px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  padding: 40px;
+  background-color: #2d004d;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.contact-item i {
+  font-size: 30px;
+  color: #ff66ff;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-item:hover i {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.contact-item h4 {
+  font-size: 20px;
+}
+
+.contact-item a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #ff66ff;
+  text-shadow: 0 0 5px #ff66ff;
+}
+/**/
+body {
+  /* Keep your existing styles */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+/**/
+/* Creative Project Section Styles */
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin: 100px auto;
+  padding: 0 20px;
+  max-width: 1280px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Background Grid Pattern */
+#projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, #333 1px, transparent 1px),
+    linear-gradient(0deg, #333 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: backgroundPan 10s linear infinite;
+}
+
+@keyframes backgroundPan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -50px -50px;
+  }
+}
+
+.project-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) scale(1);
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover {
+  box-shadow: 0 0 50px #ff66ff;
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  transform: translateZ(20px);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-image {
+  transform: translateZ(50px) scale(1.05);
+}
+
+.card-text {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 15px;
+  transform: translateZ(10px);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-text {
+  transform: translateZ(30px) scale(1.02);
+}
+
+.card-text h3 {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.card-text p {
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.btn-demo {
+  display: inline-block;
+  background: #ff66ff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s ease, background 0.3s ease;
+  transform: translateZ(20px);
+}
+
+.btn-demo:hover {
+  background: #fff;
+  color: #1a001f;
+  transform: translateZ(40px) scale(1.1);
 }
